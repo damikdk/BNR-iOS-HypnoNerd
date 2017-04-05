@@ -1,24 +1,46 @@
-//
-//  AppDelegate.m
-//  HypnoNerd
-//
-//  Created by admin on 08.02.17.
-//  Copyright © 2017 in-tech. All rights reserved.
-//
-
 #import "AppDelegate.h"
+#import "BNRHypnosisViewController.h"
+#import "BNRHypnosisView.h"
+#import "BNRReminderViewController.h"
+#import "BNRQuizViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UIScrollViewDelegate>
+
+@property (nonatomic) BNRHypnosisView *hypnosisView;
 
 @end
 
 @implementation AppDelegate
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    BNRHypnosisViewController *hvc = [[BNRHypnosisViewController alloc] init];
+    BNRReminderViewController *rvc = [[BNRReminderViewController alloc] init];
+    BNRQuizViewController *qvc = [[BNRQuizViewController alloc] init];
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[hvc, rvc, qvc];
+    
+    self.window.rootViewController = tabBarController;
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    UIUserNotificationType types = (UIUserNotificationTypeAlert);
+        
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
     return YES;
 }
+
+#pragma GCC diagnostic pop
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

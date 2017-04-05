@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BNRQuizViewController">
+            <connections>
+                <outlet property="answerLabel" destination="aJN-E6-nGZ" id="OUh-u7-mRo"/>
+                <outlet property="questionLabel" destination="jX2-u9-kot" id="Zrw-1w-wNi"/>
+                <outlet property="view" destination="iN0-l3-epB" id="qDk-GN-dZq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="center" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jX2-u9-kot" userLabel="questionLabel">
+                    <rect key="frame" x="16" y="20" width="343" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="oCF-yg-abk"/>
+                        <constraint firstAttribute="height" constant="200" id="pRK-4V-j01"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fr-dZ-8EK">
+                    <rect key="frame" x="107" y="236" width="200" height="30"/>
+                    <color key="backgroundColor" red="0.89009666442871094" green="0.89009666442871094" blue="0.89009666442871094" alpha="0.2654912243150685" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="60j-lf-o5d"/>
+                        <constraint firstAttribute="height" constant="30" id="Tin-wo-ISh"/>
+                    </constraints>
+                    <state key="normal" title="Show Question">
+                        <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showQuestion:" destination="-1" eventType="touchUpInside" id="MDg-Sz-p6P"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJN-E6-nGZ" userLabel="answerLabel">
+                    <rect key="frame" x="16" y="555.5" width="382" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="1kk-ip-z58"/>
+                        <constraint firstAttribute="width" constant="382" id="Kxl-pj-ftI"/>
+                        <constraint firstAttribute="height" constant="40" id="wRU-I7-RY4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QwU-9R-JS7">
+                    <rect key="frame" x="107" y="603" width="200" height="30"/>
+                    <color key="backgroundColor" red="0.89009666442871094" green="0.89009666442871094" blue="0.89009666442871094" alpha="0.177734375" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Lld-1r-cPw"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="Ncl-wx-Asn"/>
+                        <constraint firstAttribute="width" constant="200" id="lWU-4o-xAn"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="n9x-DQ-lz8"/>
+                        <constraint firstAttribute="height" constant="30" id="oMr-9E-OdJ"/>
+                    </constraints>
+                    <state key="normal" title="Show Answer"/>
+                    <connections>
+                        <action selector="showAnswer:" destination="-1" eventType="touchUpInside" id="Owo-yn-shi"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="QwU-9R-JS7" firstAttribute="top" secondItem="aJN-E6-nGZ" secondAttribute="bottom" constant="7.6699999999999999" id="0eC-Av-UPO"/>
+                <constraint firstItem="jX2-u9-kot" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="3CC-E0-LxD"/>
+                <constraint firstAttribute="trailing" secondItem="aJN-E6-nGZ" secondAttribute="trailing" constant="16" id="DqG-Kl-RsH"/>
+                <constraint firstItem="QwU-9R-JS7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="107" id="L4d-HO-FQf"/>
+                <constraint firstItem="aJN-E6-nGZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="NiT-p6-t3t"/>
+                <constraint firstAttribute="trailing" secondItem="5Fr-dZ-8EK" secondAttribute="trailing" constant="107" id="X9w-qZ-eZq"/>
+                <constraint firstItem="5Fr-dZ-8EK" firstAttribute="top" secondItem="jX2-u9-kot" secondAttribute="bottom" constant="16" id="aaA-sL-8BA"/>
+                <constraint firstAttribute="trailing" secondItem="jX2-u9-kot" secondAttribute="trailing" constant="16" id="abN-Ka-uME"/>
+                <constraint firstItem="aJN-E6-nGZ" firstAttribute="top" secondItem="5Fr-dZ-8EK" secondAttribute="bottom" constant="289.32999999999998" id="baj-i4-RvT"/>
+                <constraint firstAttribute="trailing" secondItem="QwU-9R-JS7" secondAttribute="trailing" constant="107" id="dVC-BN-1AI"/>
+                <constraint firstItem="jX2-u9-kot" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ft2-jh-FS5"/>
+                <constraint firstItem="5Fr-dZ-8EK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="107" id="gNX-Mo-4at"/>
+            </constraints>
+            <point key="canvasLocation" x="34" y="80"/>
+        </view>
+    </objects>
+</document>
