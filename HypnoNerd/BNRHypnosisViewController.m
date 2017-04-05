@@ -65,7 +65,7 @@
 
 - (void) drawHypnoticMessage:(NSString *)message
 {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 10000; i++) {
         
         // Create many UILabels
         UILabel *messageLabel = [[UILabel alloc] init];
