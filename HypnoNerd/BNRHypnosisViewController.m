@@ -3,6 +3,8 @@
 
 @interface BNRHypnosisViewController () <UITextFieldDelegate>
 
+@property (nonatomic, weak) UITextField *textField;
+
 @end
 
 @implementation BNRHypnosisViewController
@@ -26,8 +28,16 @@
     [super viewDidLoad];
 
     NSLog(@"BNRHypnosisViewController loaded its view");
-
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:2.0 delay:0.0 usingSpringWithDamping:0.25 initialSpringVelocity:0.0 options:0 animations:^{
+        CGRect frame = CGRectMake(40, 70, 240, 30);
+        self.textField.frame = frame;
+    } completion:NULL];}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -39,7 +49,7 @@
     CGRect frame = [UIScreen mainScreen].bounds;
     BNRHypnosisView *backgroundView = [[BNRHypnosisView alloc] initWithFrame:frame];
     
-    CGRect textFieldRect = CGRectMake(40, 70, 240, 30);
+    CGRect textFieldRect = CGRectMake(40, -30, 240, 30);
     UITextField *textField = [[UITextField alloc] initWithFrame:textFieldRect];
     
     textField.borderStyle = UITextBorderStyleRoundedRect;
@@ -50,6 +60,7 @@
     
     [backgroundView addSubview:textField];
     
+    self.textField = textField;
     self.view = backgroundView;
 }
 
@@ -65,13 +76,13 @@
 
 - (void) drawHypnoticMessage:(NSString *)message
 {
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 100; i++) {
         
         // Create many UILabels
         UILabel *messageLabel = [[UILabel alloc] init];
         
         messageLabel.backgroundColor = [UIColor clearColor];
-        messageLabel.textColor = [UIColor whiteColor];
+        messageLabel.textColor = [UIColor blackColor];
         messageLabel.text = message;
         
         [messageLabel sizeToFit];
@@ -88,6 +99,30 @@
         
         [self.view addSubview:messageLabel];
         
+        
+        // configure animations
+        messageLabel.alpha = 0.0;
+        
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            messageLabel.alpha = 1.0;
+        } completion:NULL];
+        
+        [UIView animateKeyframesWithDuration:1.0 delay:0.0 options:0 animations:^{
+            [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.6 animations:^{
+                messageLabel.center = self.view.center;
+            }];
+            
+            [UIView addKeyframeWithRelativeStartTime:0.6 relativeDuration:.4 animations:^{
+                int x = arc4random() % [@(self.view.frame.size.width) integerValue];
+                int y = arc4random() % [@(self.view.frame.size.height) integerValue];
+                messageLabel.center = CGPointMake(x, y);
+            }];
+        } completion:^(BOOL finished) {
+            NSLog(@"Animations complete");
+        }];
+    
+        
+        // configure motion effect
         UIInterpolatingMotionEffect *motionEffect;
         motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x"
                                                             type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
